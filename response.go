@@ -1,0 +1,13 @@
+package core
+
+// Response is the interface that represents an HTTP response.
+type Response interface {
+	// AddHeader adds a header value for the response.
+	AddHeader(string, string)
+	// SetHeader sets a header value for the response.
+	SetHeader(string, string)
+	// Write writes data to the response body.
+	Write([]byte) (int, error)
+	// Status sets the HTTP status code for the response.
+	Status(int)
+}
