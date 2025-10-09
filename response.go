@@ -8,6 +8,6 @@ type Response interface {
 	SetHeader(string, string)
 	// Write writes data to the response body.
 	Write([]byte) (int, error)
-	// Status sets the HTTP status code for the response.
-	Status(int)
+	// Status sets the HTTP status code for the response and returns an error if it fails.
+	Status(int) error
 }

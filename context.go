@@ -24,7 +24,8 @@ type Context interface {
 	// Use adds handlers to the context, which will be executed in the order they are added.
 	Use(...HandlerFunc)
 
-	// BasicAuth returns the username and password from the Basic Authentication header if present.
+	// BasicAuth returns the username and password from the Basic Authentication header if present,
+	// or empty strings and false if not present.
 	BasicAuth() (string, string, bool)
 	// Body returns the request body as a byte slice.
 	Body() ([]byte, error)
@@ -59,8 +60,8 @@ type Context interface {
 	AddHeader(string, string)
 	// SetHeader sets a header in the response.
 	SetHeader(string, string)
-	// Status sets the HTTP status code for the response.
-	Status(int)
+	// Status sets the HTTP status code for the response and returns an error if it fails.
+	Status(int) error
 	// Write writes data to the response body.
 	Write([]byte) (int, error)
 
