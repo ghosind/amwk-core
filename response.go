@@ -6,6 +6,8 @@ type Response interface {
 	AddHeader(string, string)
 	// SetHeader sets a header value for the response.
 	SetHeader(string, string)
+	// GetHeader retrieves a header value by name from the response.
+	GetHeader(string) string
 	// Write writes data to the response body.
 	Write([]byte) (int, error)
 	// Status sets the HTTP status code for the response and returns an error if it fails.

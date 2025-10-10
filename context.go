@@ -31,6 +31,8 @@ type Context interface {
 	Body() ([]byte, error)
 	// ClientIP returns the IP address of the client making the request.
 	ClientIP() string
+	// ContentLength returns the length of the request body in bytes.
+	ContentLength() int64
 	// ContentType returns the Content-Type header of the request.
 	ContentType() string
 	// Cookie retrieves a cookie by name from the request.
@@ -39,10 +41,14 @@ type Context interface {
 	Cookies() []*http.Cookie
 	// Header retrieves a header value by name from the request.
 	Header(string) string
+	// HeaderValues retrieves all values for a header by name from the request.
+	HeaderValues(string) []string
 	// Headers returns all headers from the request.
 	Headers() http.Header
 	// Method returns the HTTP method of the request (e.g., GET, POST).
 	Method() string
+	// Protocol returns the HTTP protocol version of the request (e.g., HTTP/1.1).
+	Protocol() string
 	// Path returns the request path.
 	Path() string
 	// PathValue retrieves a path parameter value by name from the request.
@@ -60,6 +66,8 @@ type Context interface {
 	AddHeader(string, string)
 	// SetHeader sets a header in the response.
 	SetHeader(string, string)
+	// GetHeader retrieves a header value by name from the response.
+	GetHeader(string) string
 	// Status sets the HTTP status code for the response and returns an error if it fails.
 	Status(int) error
 	// Write writes data to the response body.
