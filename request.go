@@ -14,16 +14,22 @@ type Request interface {
 	Body() ([]byte, error)
 	// ClientIP returns the IP address of the client making the request.
 	ClientIP() string
+	// ContentLength returns the length of the request body in bytes.
+	ContentLength() int64
 	// Cookie retrieves a cookie by name from the request.
 	Cookie(string) (*http.Cookie, error)
 	// Cookies returns all cookies from the request.
 	Cookies() []*http.Cookie
 	// Header retrieves a header value by name from the request.
 	Header(string) string
+	// HeaderValues retrieves all values for a header by name from the request.
+	HeaderValues(string) []string
 	// Headers returns all headers from the request.
 	Headers() http.Header
 	// Method returns the HTTP method of the request (e.g., GET, POST).
 	Method() string
+	// Protocol returns the HTTP protocol version of the request (e.g., HTTP/1.1).
+	Protocol() string
 	// Path returns the request path.
 	Path() string
 	// PathValue retrieves a path parameter value by name from the request.
