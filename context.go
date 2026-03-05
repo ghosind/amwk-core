@@ -2,6 +2,7 @@ package core
 
 import (
 	"context"
+	"io"
 	"net/http"
 	"net/url"
 )
@@ -15,20 +16,20 @@ type Context interface {
 	// Context returns the context.Context associated with the request.
 	Context() context.Context
 
+	// Application returns the application instance associated with the context.
+	Application() Application
+
 	// Abort marks the context as aborted, and subsequent handlers will not be executed.
 	Abort()
 	// IsAbort checks if the context is marked as aborted.
 	IsAbort() bool
-	// Next calls the next handler in the chain.
-	Next()
+	// Next calls the next handler in the handlers chain.
+	Next() error
 	// Use adds handlers to the context, which will be executed in the order they are added.
 	Use(...HandlerFunc)
 
-	// BasicAuth returns the username and password from the Basic Authentication header if present,
-	// or empty strings and false if not present.
-	BasicAuth() (string, string, bool)
-	// Body returns the request body as a byte slice.
-	Body() ([]byte, error)
+	// Body returns the request body as a readable stream.
+	Body() (io.ReadCloser, error)
 	// ClientIP returns the IP address of the client making the request.
 	ClientIP() string
 	// ContentLength returns the length of the request body in bytes.
