@@ -2,7 +2,7 @@
 
 <div align="center"><img src="./logo.svg" alt="AMWK Logo" width="100"/></div>
 
-AMWK is a lightweight, modular web framework design for simplifying web application development in Go. It provides a highly flexible core with pluggable adapters for different runtimes (net/http, AWS Lambda, etc.).
+AMWK is a lightweight, modular web framework designed for simplifying web application development in Go. It provides a highly flexible core with pluggable adapters for different runtimes (net/http, AWS Lambda, etc.).
 
 > [!IMPORTANT]
 > This repository is in early development. The core design and APIs are still evolving, and breaking changes may occur. We welcome feedback and contributions to help improve the framework.
@@ -20,14 +20,14 @@ AMWK is a lightweight, modular web framework design for simplifying web applicat
 
 - [`core`](https://github.com/go-amwk/core): The core module defines the fundamental interfaces and types for the framework. It provides the basic building blocks for handling requests and responses in a platform-agnostic way.
 - [`engine`](https://github.com/go-amwk/engine): The engine module implements an adapter-agnostic request handling engine. It provides the main request processing loop, middleware chaining, and more.
-- [`web`](https://github.com/go-amwk/web): An HTTP adapter that implements based on `net/http`.
+- [`web`](https://github.com/go-amwk/web): An HTTP adapter that based on Go's `net/http` package.
 - [`examples`](https://github.com/go-amwk/examples): A collection of runnable examples demonstrating various features and use cases of the framework.
 
 ---
 
 ## Getting Started
 
-> The AMWK framework requires Go 1.18 or later, and we recommend using Go 1.22 or later for the best experience.
+> The AMWK framework requires Go 1.22 or later.
 
 Install an adapter (e.g. `web`) and its dependencies:
 
@@ -49,7 +49,7 @@ import (
 func main() {
   app := web.Default()
 
-  app.Use(func(c web.Context) error {
+  app.Use(func(ctx core.Context) error {
     ctx.Write([]byte("hello world"))
     return nil
   })
@@ -94,4 +94,4 @@ See `CONTRIBUTING.md` in the repository root for templates and more details.
 
 ## License
 
-This project uses the MIT License (or replace with your license of choice). See `LICENSE` in the repository root.
+This project uses the MIT License. See `LICENSE` in the repository root.
