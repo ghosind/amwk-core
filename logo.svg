@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-labelledby="titleDesc">
+  <title id="titleDesc">Modular Web Framework Logo</title>
+  <desc>Central core with three connected modules, representing core + pluggable network layers.</desc>
+
+  <defs>
+    <linearGradient id="gCore" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0B4A9A"/>
+      <stop offset="1" stop-color="#072B63"/>
+    </linearGradient>
+    <linearGradient id="gTeal" x1="0" x2="1">
+      <stop offset="0" stop-color="#00A89C"/>
+      <stop offset="1" stop-color="#007D77"/>
+    </linearGradient>
+    <linearGradient id="gOrange" x1="0" x2="1">
+      <stop offset="0" stop-color="#FF8A3D"/>
+      <stop offset="1" stop-color="#FF6A00"/>
+    </linearGradient>
+    <linearGradient id="gBlue" x1="0" x2="1">
+      <stop offset="0" stop-color="#93B7FF"/>
+      <stop offset="1" stop-color="#6C8EFF"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feOffset result="offOut" in="SourceAlpha" dx="0" dy="6"/>
+      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="6"/>
+      <feColorMatrix result="matOut" in="blurOut" type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0.18"/>
+      <feBlend in="SourceGraphic" in2="matOut" mode="normal"/>
+    </filter>
+  </defs>
+
+  <!-- connections (draw first so core sits on top) -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- top connection -->
+    <path d="M120 44 L120 120" stroke="#9FCFE6" stroke-width="10" opacity="0.85"/>
+    <!-- right connection -->
+    <path d="M214 120 L120 120" stroke="#FFD1A3" stroke-width="10" opacity="0.95"/>
+    <!-- bottom-left connection -->
+    <path d="M26 214 L120 120" stroke="#C5D9FF" stroke-width="10" opacity="0.9"/>
+  </g>
+
+  <!-- outer modules -->
+  <rect x="102" y="8" width="36" height="36" rx="8" ry="8" fill="url(#gTeal)" stroke="#ffffff" stroke-opacity="0.06" />
+  <rect x="196" y="102" width="36" height="36" rx="8" ry="8" fill="url(#gOrange)" stroke="#ffffff" stroke-opacity="0.06" />
+  <rect x="8" y="196" width="36" height="36" rx="8" ry="8" fill="url(#gBlue)" stroke="#ffffff" stroke-opacity="0.06" />
+
+  <!-- central core (on top of connections) -->
+  <g filter="url(#shadow)">
+    <rect x="72" y="72" width="96" height="96" rx="18" ry="18" fill="url(#gCore)"/>
+    <!-- subtle inner ring -->
+    <rect x="84" y="84" width="72" height="72" rx="14" ry="14" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="2"/>
+  </g>
+
+  <!-- optional small center mark to emphasize core -->
+  <circle cx="120" cy="120" r="6" fill="#ffffff" fill-opacity="0.14"/>
+
+  <!-- accessibility: decorative label (not visible, for clarity) -->
+  <g aria-hidden="true">
+    <!-- small dots near modules to add rhythm -->
+    <circle cx="120" cy="44" r="3" fill="#FFFFFF" fill-opacity="0.06"/>
+    <circle cx="168" cy="120" r="3" fill="#FFFFFF" fill-opacity="0.06"/>
+    <circle cx="26" cy="174" r="3" fill="#FFFFFF" fill-opacity="0.06"/>
+  </g>
+</svg>
