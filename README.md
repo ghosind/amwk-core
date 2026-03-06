@@ -75,9 +75,10 @@ Each example folder should include a README explaining how to run, test, and ext
 ## Contributing
 
 We welcome contributions. Suggested process:
+
 1. Open an Issue to discuss large API or core changes (especially any `core` interface changes).
 2. Fork -> feature branch -> PR:
-   - Run `go test ./...` and lints (`golangci-lint`) locally.
+   - Run `go test ./...`.
    - Include tests for new functionality.
    - Keep PRs small and focused.
 3. API stability:
@@ -94,4 +95,4 @@ See `CONTRIBUTING.md` in the repository root for templates and more details.
 
 ## License
 
-This project uses the MIT License. See `LICENSE` in the repository root.
+This project uses the Apache License 2.0. See [`LICENSE`](./LICENSE) for details.
