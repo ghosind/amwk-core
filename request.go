@@ -9,6 +9,8 @@ import (
 
 // Request is the interface that represents an HTTP request.
 type Request interface {
+	// Application returns the application instance associated with the request.
+	Application() Application
 	// Body returns the request body as a readable stream.
 	Body() (io.ReadCloser, error)
 	// ClientIP returns the IP address of the client making the request.
