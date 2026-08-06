@@ -26,12 +26,15 @@ type Context interface {
 	// Next calls the next handler in the handlers chain.
 	Next() error
 	// Use adds handlers to the context, which will be executed in the order they are added.
-	Use(...HandlerFunc)
+	Use(...HandlerFunc) Context
 
 	// Body returns the request body as a readable stream.
 	Body() (io.ReadCloser, error)
-	// ClientIP returns the IP address of the client making the request.
+	// ClientIP returns the IP address of the direct TCP connection peer.
 	ClientIP() string
+	// ClientIPs collects all available client IP information from the request, combining proxy
+	// headers with the direct connection IP.
+	ClientIPs() []string
 	// ContentLength returns the length of the request body in bytes.
 	ContentLength() int64
 	// ContentType returns the Content-Type header of the request.
@@ -71,10 +74,23 @@ type Context interface {
 	GetHeader(string) string
 	// DelHeader deletes a header from the response.
 	DelHeader(string)
+	// Size returns the size of the response body in bytes.
+	Size() int
 	// Status sets the HTTP status code for the response and returns an error if it fails.
 	Status(int) error
 	// Write writes data to the response body.
 	Write([]byte) (int, error)
+	// WriteString writes a string to the response body.
+	WriteString(string) (int, error)
+	// Written returns the data that has been written to the response body so far.
+	Written() []byte
+	// String writes a string to the response body.
+	String(string) (int, error)
+	// JSON serializes the given data as JSON and writes it to the response body.
+	JSON(any) (int, error)
+	// Redirect sends an HTTP redirect to the specified URL, default 302 status code is used if not
+	// specified. Returns an error if the redirect fails.
+	Redirect(string, ...int) error
 
 	// Request returns the wrapped Request object associated with the context.
 	Request() Request

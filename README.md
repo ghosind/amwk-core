@@ -10,7 +10,7 @@ AMWK is a lightweight, modular web framework designed for simplifying web applic
 ## Why this design
 
 - Context-first: most common operations (params, binding, response rendering, control flow, shared values) are exposed on `core.Context`, so users rarely need to use raw `*http.Request` or low-level response objects.
-- Small, stable core: the `core` package exposes only abstract interfaces (Context, Request, Response, Application, HandlerFunc, Logger). Implementations live in `engine`, `web`, `lambda`, etc.
+- Small, stable core: the `core` package exposes only abstract interfaces (Context, Request, Response, Application, HandlerFunc). Implementations live in `engine`, `web`, `lambda`, etc.
 - Pluggable adapters: same middleware and handlers can run on `net/http` or AWS Lambda with minimal changes because adapters translate platform requests/responses to the core interfaces.
 - Middleware-first: full support for global, group, and request-local middleware (the framework supports `ctx.Use(...)` to append middleware only for the current request).
 
@@ -21,6 +21,7 @@ AMWK is a lightweight, modular web framework designed for simplifying web applic
 - [`core`](https://github.com/go-amwk/core): The core module defines the fundamental interfaces and types for the framework. It provides the basic building blocks for handling requests and responses in a platform-agnostic way.
 - [`engine`](https://github.com/go-amwk/engine): The engine module implements an adapter-agnostic request handling engine. It provides the main request processing loop, middleware chaining, and more.
 - [`web`](https://github.com/go-amwk/web): An HTTP adapter that based on Go's `net/http` package.
+- [`router`](https://github.com/go-amwk/router): A router module for defining and handling routes in the framework.
 - [`examples`](https://github.com/go-amwk/examples): A collection of runnable examples demonstrating various features and use cases of the framework.
 
 ---
